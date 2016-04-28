@@ -2,22 +2,72 @@
 layout: default
 ---
 
-<div class="home">
+<div class="posts">
+  {% for post in paginator.posts %}
+  <section class="post">
+    <header class="post__header">
+      <h1 class="alpha post__title">
+        <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      </h1>
+      <span class="post__meta">
+        Posted on {{ post.date | date: "%b %-d, %Y" }} by <a href="//twitter.com/giamir" target="_blank">Giamir Buoncristiani</a>
+      </span>
+    </header>
+    <div class="post__content">
+      <p>
+        {{ post.content | strip_html | truncatewords: 30 }}
+      </p>
+    </div>
+    <div class="post__button">
+      <a href="{{ post.url | prepend: site.baseurl }}" class="button" title="Read {{ post.title }}">
+        Read more
+        <img src="{{ site.baseurl }}/img/icons/more.svg" alt="{{ post.title }}">
+      </a>
+    </div>
+  </section>
+  {% endfor %}
+</div>
 
-  <h1 class="page-heading">Posts</h1>
+<div class="pagination">
+  <ul>
+    <li id="pagination-prev">
+      {% if paginator.previous_page %}
+        <a class="pagination-button" href="{{ paginator.previous_page_path }}">
+          <img src="{{ site.baseurl }}/img/icons/prev.svg" alt="">
+        </a>
+      {% else %}
+        <span>
+          <img src="{{ site.baseurl }}/img/icons/prev.svg" alt="">
+        </span>
+      {% endif %}
+    </li>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
+    {% for page in (1..paginator.total_pages) %}
+      {% if page == paginator.page %}
+        <li>
+          <span id="current-page">{{ page }}</span>
+        </li>
+      {% elsif page == 1 %}
+        <li>
+          <a href="/">{{ page }}</a>
+        </li>
+      {% else %}
+        <li>
+          <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+        </li>
+      {% endif %}
     {% endfor %}
+
+    <li id="pagination-next">
+      {% if paginator.next_page %}
+        <a class="pagination-button" href="{{ paginator.next_page_path }}">
+          <img src="{{ site.baseurl }}/img/icons/next.svg" alt="">
+        </a>
+      {% else %}
+        <span>
+          <img src="{{ site.baseurl }}/img/icons/next.svg" alt="">
+        </span>
+      {% endif %}
+    </li>
   </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
 </div>
