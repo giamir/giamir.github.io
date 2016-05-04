@@ -1,0 +1,3 @@
+User-agent: *
+Sitemap: https://giamir.com/sitemap.xml
+Disallow:

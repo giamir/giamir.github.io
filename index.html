@@ -10,7 +10,7 @@ layout: default
         <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
       </h1>
       <span class="post__meta">
-        Posted on {{ post.date | date: "%b %-d, %Y" }} by <a href="//twitter.com/giamir" target="_blank">Giamir Buoncristiani</a>
+        Posted on {{ post.date | date: "%b %-d, %Y" }} by <a href="//twitter.com/giamir" target="_blank">Giamir Buoncristiani</a> - {{ post.time }} mins
       </span>
     </header>
     <div class="post__content">
@@ -28,7 +28,7 @@ layout: default
   {% endfor %}
 </div>
 
-<div class="pagination">
+<!-- <div class="pagination">
   <ul>
     <li id="pagination-prev">
       {% if paginator.previous_page %}
@@ -70,4 +70,4 @@ layout: default
       {% endif %}
     </li>
   </ul>
-</div>
+</div> -->
