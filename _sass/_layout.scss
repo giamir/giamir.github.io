@@ -128,6 +128,18 @@
       text-align: justify;
     }
   }
+  &.not-found {
+    background: url('../img/404.png') center top no-repeat;
+    background-size: contain;
+    min-height: 300px;
+    padding: 100px 0 0;
+  }
+  &.about{
+    background: url('../img/about.png') center top no-repeat;
+    background-size: contain;
+    min-height: 550px;
+    padding: 200px 0 0;
+  }
   &.single {
     ol {
       list-style: decimal;
@@ -353,14 +365,6 @@
     width: 100%;
     height: 100%;
   }
-}
-
-.about {
-  background: url('../img/about.png') center top no-repeat;
-  background-size: contain;
-  min-height: 550px;
-  text-align: center;
-  padding: 200px 0 0;
 }
 
 #pagination {
