@@ -100,7 +100,7 @@ This series of articles aimed to answer essentially 2 questions:
 * __Because it does not embrace the language. It's like having a dolby surround system and listen mono. Actually it's even worst because to "listen mono" (use classes) you need to use your modern system (JS) in an unnatural way (use constructors to simulate classes).__
 
 
-* __NO, JS is a very powerful programming language and take a "faking classes" approach limits your code. You completely miss what makes JS so cool and interesting. Also today lots of developers start to prefer _composition over inheritance_, but this is another story and material for a potential future blog post.__
+* __NO, JS is a very powerful programming language and take a "faking classes" approach limits your code. You completely miss what makes JS so cool and interesting.__
 
 These are just my answers; I would like to hear yours.<br>
 Drop a comment below!
