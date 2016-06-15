@@ -8,7 +8,7 @@ time: 3
 
 > _Who have never used pseudoclasses in JavaScript?_
 
-It's too hard for a "traditional OO developer" do not use classes. They are his way to describe objects.<br>
+It's too hard for a "traditional OO developer" to not use classes. They are his way to describe objects.<br>
 
 The first time I bumped into JS I was the "traditional developer" and the first question I asked to myself was how can I work with classes in JS?<br>
 __JS does not have classes__ but I realised pretty soon there are plenty of solutions to fake classes.<br>
