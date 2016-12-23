@@ -12,25 +12,25 @@ Features like having one store as the single source of truth, as well as actions
 One of the last challenge we faced on the project I currently work on was too find out a strategy to structure our React Redux unit tests.
 
 ## Why unit testing is important?
-Before starting any sort of rumbling is good to stop for one second and remind ourselves some  benefits unit testing provides.
+Before starting any sort of rambling it is good to stop for one second and remind ourselves of the benefits unit testing provides.
 
 > Unit testing is a type of automated test that is the closest to the code itself.
 
-Unit tests help find software bugs early; they give confidence to devs when it is refactoring time (hence always) and they provide a live documentation to our software. They are also the bedrock of **T**est **D**riven **D**evelopment.
+Unit tests help find software bugs early; they give confidence to devs when it is refactoring time (hence always) and they provide live documentation to our software. They are also the bedrock of **T**est **D**riven **D**evelopment.
 
 > Unit tests provide **fast** feedback on code.
 
 These are just some of the reasons why if you are not unit testing your React Redux application yet you should start to think of doing so.
 
 ## How to unit test a React Redux Application?
-React and Redux are pretty new technologies and, as always, in software development there is no an absolute dogmatic way to test code; developers take different approaches and use different tools based on their needs.
+React and Redux are pretty new technologies and, as always, in software development there is no absolute dogmatic way to test code; developers take different approaches and use different tools based on their needs.
 
-After few weeks of research me and my team came up with a *React Redux Manifesto*.
+After a few weeks of research me and my team came up with a *React Redux Manifesto*.
 
 ![React Redux Manifesto](https://s3.eu-west-2.amazonaws.com/websitegiamir/react-redux-manifesto.png)
 
 It was a way to start being consistent within the team. We collected testing guidelines and we explained why we decided to test things in a way rather than another one.
-Today I want to share our takeaway from this experience hoping this could help other developers to shape a testing strategy for their React Redux applications.
+Today I want to share our takeaway from this experience, hoping this could help other developers to shape a testing strategy for their React Redux applications.
 
 Enough talking, let's dive into the matter.
 
@@ -41,7 +41,7 @@ First of all we need to understand how the architecture of the app looks like, s
 
 ### The Redux design pattern
 
-It's not the purpose of this post to explain how Redux works, there are already gozillion of good resources for that (some of them are in the further reading section).
+It's not the purpose of this post to explain how Redux works, there are already gazillions of good resources for that (some of them are in the further reading section).
 
 Anyway it is useful to quickly refresh how the state is managed in a Redux application.
 
@@ -70,7 +70,7 @@ Let's quickly refresh what Container components (aka Smart) and Presentational c
 #### Presentational components
 
 * Are concerned with how things look.
-* Often allow containment via this.props.children.
+* Often allow containment via `this.props.children`.
 * Have no dependencies on the rest of the app, such as actions or stores.
 * Don’t specify how the data is loaded or mutated.
 * Receive data and callbacks exclusively via props.
@@ -83,7 +83,7 @@ Let's quickly refresh what Container components (aka Smart) and Presentational c
 * Provide the data and behaviour to presentational or other container components.
 * Call actions and provide these as callbacks to the presentational components.
 * Are often stateful, as they tend to serve as data sources.
-* Are usually generated using higher order components such as connect() from React Redux.
+* Are usually generated using higher order components such as `connect()` from React Redux.
 
 
 ### The final architecture, what should I test?
@@ -204,7 +204,7 @@ If you are interested to see how the selectors code looks like in the example yo
 
 #### Rendering tests
 Again check if the rendering works fine is the starting point when we test components.
-In this case because our container component has several children we want to check in our tests that the `renderedComponent` (enzyme wrapper) contains every React instance which is supposed to be initialised given a determined set of props.
+In this case because our container component has several children we want to check in our tests that the `renderedComponent` (Enzyme wrapper) contains every React component instance which is supposed to be initialised given a determined set of props.
 
 ``` js
 describe('<App />', () => {
@@ -312,7 +312,7 @@ function appReducer(state = initialState, action) {
 
 <small>[Complete version of the appReducer](https://github.com/giamir/unit-testing-react-redux/blob/master/app/containers/App/reducer.js)</small>
 
-Testing reducers should be quite simple because they are pure functions (same data in, same data out). As I mentioned before another thing to consider is to use action creators when creating the action for the reducer under test. Taking this approach allow us to avoid explicitly testing any action creators.
+Testing reducers should be quite simple because they are pure functions (same data in, same data out, no side effects). As I mentioned before another thing to consider is to use action creators when creating the action for the reducer under test. Taking this approach allows us to avoid explicitly testing any action creators.
 
 <small>In the following tests we are using the [Jasmine Immutable Matchers](https://github.com/unindented/custom-immutable-matchers) library to be able to use the `toEqualImmutable` assertion on Immutable objects.</small>
 
@@ -374,7 +374,7 @@ I'm planning to treat this topic in a separate blog post.
 
 > __1001 ways to manage side effects in Redux__
 
-Well, if you are still with me at this point of the post you surely are a tough person and I would be happy to hear what is your way to unit test React Redux application. Drop me a comment below!
+Well, if you are still with me at this point of the post you surely are a tough person and I would be happy to hear what is your way to unit test a React Redux application. Drop me a comment below!
 
 You can find the entire source code of the examples above in this [Github repo](https://github.com/giamir/unit-testing-react-redux).
 
