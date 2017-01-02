@@ -9,7 +9,7 @@ time: 10
 Redux is a tool for managing data-state and UI-state in JavaScript applications.
 Features like having one store as the single source of truth, as well as actions and reducers that consist of pure functions made this tool so popular in the JS community especially when it is used in combination with React.
 
-One of the last challenge we faced on the project I currently work on was too find out a strategy to structure our React Redux unit tests.
+One of the last challenge we faced on the project I currently work on was to find out a strategy to structure our React Redux unit tests.
 
 ## Why unit testing is important?
 Before starting any sort of rambling it is good to stop for one second and remind ourselves of the benefits unit testing provides.
