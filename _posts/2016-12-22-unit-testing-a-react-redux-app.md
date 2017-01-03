@@ -122,7 +122,7 @@ Let's say that check if the rendering works fine is the starting point when we t
 
 ``` js
 const children = 'Save';
-const renderComponent = (props = {}) => mount(
+const renderComponent = (props = {}) => shallow(
   <Button {...props}>
     {children}
   </Button>
