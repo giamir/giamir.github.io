@@ -11,7 +11,7 @@ Features like having one store as the single source of truth, as well as actions
 
 One of the last challenges we faced on the project I currently work on was to find out a strategy to structure our React Redux unit tests.
 
-## Why unit testing is important?
+## Why is unit testing important?
 Before starting any sort of rambling it is good to stop for one second and remind ourselves of the benefits unit testing provides.
 
 > Unit testing is a type of automated test that is the closest to the code itself.
