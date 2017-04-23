@@ -369,11 +369,6 @@ How to unit test a React Redux Application? What should I test?
 * **Reducers**, test all the logic and check they are pure (don't mutate the state)
 * **End to End tests**, render the root component and simulate user interactions
 
-In this article I did not consider testing strategies for __Redux middlewares__.
-I'm planning to treat this topic in a separate blog post.
-
-> __1001 ways to manage side effects in Redux__
-
 Well, if you are still with me at this point of the post you surely are a tough person and I would be happy to hear what is your way to unit test a React Redux application. Drop me a comment below!
 
 You can find the entire source code of the examples above in this [Github repo](https://github.com/giamir/unit-testing-react-redux).
