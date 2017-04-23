@@ -2,7 +2,7 @@
  * GitHub style for Pygments syntax highlighter, for use with Jekyll
  * Courtesy of GitHub.com
  */
-p {
+p, small, li {
   > code {
     background-color: #f5f6f5;
     padding: 1px 3px;
