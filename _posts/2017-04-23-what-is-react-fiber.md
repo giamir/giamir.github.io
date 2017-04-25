@@ -14,7 +14,7 @@ So, what is `React Fiber` in a nutshell?
 
 It's a ground-up rewrite of the current reconciliation algorithm which now has been retroactively called `React Stack` because based on recursion.
 
-<small>DISCLAIMER: The following are personal notes and deductions after exploring the new `React Fiber` reconciler codebase. Some of the content can be wrong or not updated, please open a [pull request](https://github.com/giamir/giamir.github.io/blob/master/_posts/2017-03-20-what-is-react-fiber.md) if you notice any mistake. 🙏</small>
+<small>DISCLAIMER: The following are personal notes and deductions after exploring the new `React Fiber` reconciler codebase. Some of the content can be wrong or not updated, please open a [pull request](https://github.com/giamir/giamir.github.io/edit/master/_posts/2017-04-23-what-is-react-fiber.md) if you notice any mistake. 🙏</small>
 
 ## What is the reconciler ?
 
