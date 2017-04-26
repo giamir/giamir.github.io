@@ -99,7 +99,7 @@ This first phase is **interruptible** and we will see later in the example how t
 
 Then there is a **commit phase** where `Fiber` will actually make all the changes figured out in the previous phase to the DOM.
 
-This second phase is **uninterruptible** because we do not want to end up with an inconsistent UI. Partial updates can be annoying to the user and `Fiber` avoid them.
+This second phase is **uninterruptible** because we do not want to end up with an inconsistent UI. Partial updates can be annoying to the user and `Fiber` avoids them.
 
 `Fiber` will also call the lifecycle hooks and handle error boundaries as part of the commit phase.
 
@@ -133,7 +133,7 @@ ReactDOM.unstable_deferredUpdates(() => {
 });
 ```
 
-<small>A thing to keep in mind is that we are passing to `setState` an updater function rather than a plane object.
+<small>A thing to keep in mind is that we are passing to `setState` an updater function rather than a plain object.
 This is necessary in order to defers updates. More about functional setState can be found in [this article](https://medium.freecodecamp.com/functional-setstate-is-the-future-of-react-374f30401b6b).</small>
 
 When a *numbers update* is triggered, as you can see from the picture, `React` just calls the `requestIdleCallBack` function and it does not even start to look for changes on the new tree.
