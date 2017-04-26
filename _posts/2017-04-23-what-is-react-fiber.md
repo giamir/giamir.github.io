@@ -12,13 +12,13 @@ So, what is `React Fiber` in a nutshell?
 
 > **React Fiber** is an ongoing reimplementation of the React reconciler.
 
-It's a ground-up rewrite of the current reconciliation algorithm which now has been retroactively called `React Stack` because based on recursion.
+It's a ground-up rewrite of the current reconciliation algorithm which now has been retroactively called `React Stack` because it is based on recursion.
 
 <small>DISCLAIMER: The following are personal notes and deductions after exploring the new `React Fiber` reconciler codebase. Some of the content can be wrong or not updated, please open a [pull request](https://github.com/giamir/giamir.github.io/edit/master/_posts/2017-04-23-what-is-react-fiber.md) if you notice any mistake. 🙏</small>
 
 ## What is the reconciler ?
 
-When React first came out the most revolutionary feature was the `Virtual DOM` because it makes writing applications a lot easier. Instead of telling the browser exactly what needs to do in order to update your UI, you would tell React how the next state of your application should look like and it would take care of everything in between.
+When React first came out the most revolutionary feature was the `Virtual DOM` because it makes writing applications a lot easier. Instead of telling the browser exactly what it needs to do in order to update your UI, you would tell React how the next state of your application should look like and it would take care of everything in between.
 
 > The **reconciler** is the part of React which contains **the algorithm used to diff one tree with another** to determine which parts need to be changed.
 
@@ -34,9 +34,9 @@ Probably one of the main reasons is this historical problem we have in browsers:
 
 Rendering the page, responding to user actions, computing JS, managing network activities, and manipulating the DOM is all handled by the browsers main thread. Although today some of these things can be moved to another thread safely and with relative ease using Workers, **only the main thread can change the DOM**.
 
-In React applications when the state changes or the props update the `render()` function create a new tree of React Elements and then React run the reconciliation algorithm to figure out how to efficiently update the UI to match the new tree.
+In React applications when the state changes or the props update the `render()` function create a new tree of React Elements and then React runs the reconciliation algorithm to figure out how to efficiently update the UI to match the new tree.
 
-The `React Stack` reconciler always processes the component tree **synchronously** in a single pass. This **prevents the main thread to do potential urgent work** until the recursive process has finished. If this computation run while the user happen to type on a text input, your app can become **unresponsive**, resulting in **choppy frame rates** and **laggy input**.
+The `React Stack` reconciler always processes the component tree **synchronously** in a single pass. This **prevents the main thread to do potential urgent work** until the recursive process has finished. If this computation runs while the user happen to type on a text input, your app can become **unresponsive**, resulting in **choppy frame rates** and **laggy input**.
 
 The new `Fiber` reconciler main goal is to **split interruptible work in chunks** with the ability to **assign priority to different types of updates** so that the main thread could decide to pause the diff algorithm, potentially do some more urgent work, and continue from where it left at a later time.
 
@@ -45,7 +45,7 @@ As mentioned in the scheduling section of the [React Design Principles Documenta
 > If something is offscreen, we can delay any logic related to it. If data is arriving faster than the frame rate, we can coalesce and batch updates. We can prioritize work coming from user interactions (such as an animation caused by a button click) over less important background work (such as rendering new content just loaded from the network) to avoid dropping frames.
 
 ## The triangles demo
-To better understanding the benefits `React Fiber` can provide to our React applications Sebastian Markbåge who is considered the "tech lead" of the React Core Team built a useful fractals example. Check out the following video:
+To better understand the benefits `React Fiber` can provide to our React applications Sebastian Markbåge who is considered the "tech lead" of the React Core Team built a useful fractals example. Check out the following video:
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">The Fiber Triangle demo now lets you toggle time-slicing on and off. Makes it much easier to see the effect. Thanks <a href="https://twitter.com/giamir">@giamir</a> for the PR! 🎉 <a href="https://t.co/qhsWUIyXPf">pic.twitter.com/qhsWUIyXPf</a></p>&mdash; Andrew Clark (@acdlite) <a href="https://twitter.com/acdlite/status/846456239693344769">March 27, 2017</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -54,11 +54,11 @@ To better understanding the benefits `React Fiber` can provide to our React appl
 
 As you can see from the video, there are 2 different kind of updates going on in this demo.
 
-One that make the triangles narrow and wide which has to happen every 16ms (60 FPS) in order for the animation to look smooth and one that update the numbers contained inside every single dots which happen approximately every 1000ms.
+One that make the triangles narrow and wide which has to happen every 16ms (60 FPS) in order for the animation to look smooth and one that updates the numbers contained inside every single dots which happen approximately every 1000ms.
 
-This example is perfect for analysing a situation where we want to be able to assign different priorities to different types of updates. The *animation update* which make the triangles wide and narrow is more important than the *numbers* one. If the numbers are updated with some delay the user will probably do not even notice it. In the other hand if the animation start to dropping frame we would end up staring at a janky motion.
+This example is perfect for analysing a situation where we want to be able to assign different priorities to different types of updates. The *animation update* which make the triangles wide and narrow is more important than the *numbers* one. If the numbers are updated with some delay the user will probably not even notice it. In the other hand if the animation starts to dropping frame we would end up staring at a janky motion.
 
-Let's use this example to check out how the `Fiber` reconciler works and how can split work in chunks.
+Let's use this example to check out how the `Fiber` reconciler works and how we can split work in chunks.
 
 ## A taste of React Fiber architecture
 
@@ -67,7 +67,7 @@ Andrew Clark's [React Fiber Architecture document](https://github.com/acdlite/re
 > Fiber is a **reimplementation of the stack**, specialized for React components. You can think of a single fiber as a **virtual stack frame**.<br />
 The advantage of reimplementing the stack is that you can **keep stack frames in memory** and execute them however (and whenever) you want. This is crucial for accomplishing the goals we have for **scheduling**.
 
-And more in details:
+And more in detail:
 
 > A fiber is a JavaScript object that contains information about a component, its input, and its output. At any time, a component instance has at most two fibers that correspond to it: the **current**, flushed fiber, and the **work-in-progress** fiber.
 
@@ -95,7 +95,7 @@ If you are interested on understanding them I strongly recommend you to read the
 
 There is a first **render / reconciliation phase** where `Fiber` will build up a *working-in-progress* tree and figure out a list of the changes it needs to make in order to update the UI. It will **not** make any actual changes though at this stage.
 
-This first phase is **interruptible** and we will see later in the example how this peculiarity becomes key on allowing high priority updates to jump ahead low priority updates.
+This first phase is **interruptible** and we will see later in the example how this peculiarity becomes key on allowing high priority updates to jump ahead of low priority updates.
 
 Then there is a **commit phase** where `Fiber` will actually make all the changes figured out in the previous phase to the DOM.
 
@@ -185,15 +185,15 @@ You can play with `Fiber` today simply typing:
 npm install react@next react-dom@next
 ```
 
-## What new features React Fiber will introduce ?
+## What new features will React Fiber introduce ?
 `React Fiber` opens the door to a lot of new functionalities. These are the ones the react core team has already started working on.
 
 * [Defer updates to avoid dropping frames (Async setState / Time slicing)](https://github.com/facebook/react/issues/8830)
 * [Recover from errors thrown in render methods (Error Boundaries)](https://github.com/facebook/react/issues/2461)
 * [Render subtrees into DOM node containers (Portals)](https://github.com/facebook/react/pull/8386)
-* [Render can returns multiple children](https://github.com/facebook/react/issues/2127)
+* [Render can return multiple children](https://github.com/facebook/react/issues/2127)
 
-<small>NB: This new features will not be available on React 16 which, as I already said, will mainly focus on backward compatibility.</small>
+<small>NB: These new features will not be available on React 16 which, as I already said, will mainly focus on backward compatibility.</small>
 
 We already had a taste of how the new `unstable_deferredUpdates` API works on the triangles demo.
 
@@ -202,9 +202,9 @@ I am planning to analyse the rest of the new experimental functionalities as I h
 ## Conclusion
 So in a nutshell why should you be excited about this shiny new version of the React reconciler algorithm?
 
-* It makes apps more fluid and responsible allowing high priority updates to jump ahead low priority updates. It does that breaking up the work in small unit of works that can be paused.
+* It makes apps more fluid and responsible allowing high priority updates to jump ahead low priority updates. It does that breaking up the work into small unit of works that can be paused.
 * In future it could parallelise work between multiple workers in an efficient way splitting up branches of the tree and analyse them in parallel.
-* In the long term it would improve startup time rendering components as they become available to the browser without the needs to wait for a whole bundle to be downloaded.
+* In the long term it would improve startup time rendering components as they become available to the browser without the need to wait for a whole bundle to be downloaded.
 
 > **The future looks bright and full of new possibilities for React**
 
