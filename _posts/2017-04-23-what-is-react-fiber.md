@@ -10,9 +10,9 @@ During the last months, the interest of the community to the upcoming version of
 
 So, what is `React Fiber` in a nutshell?
 
-> **React Fiber** is an ongoing reimplementation of the React reconciler.
+> **React Fiber** is a reimplementation of the React reconciler.
 
-It's a ground-up rewrite of the current reconciliation algorithm which now has been retroactively called `React Stack` because it is based on recursion.
+It's a ground-up rewrite of the `React 15 and older versions` reconciliation algorithm which now has been retroactively called `React Stack` because it is based on recursion.
 
 <small>DISCLAIMER: The following are personal notes and deductions after exploring the new `React Fiber` reconciler codebase. Some of the content can be wrong or not up to date, please open a [pull request](https://github.com/giamir/giamir.github.io/edit/master/_posts/2017-04-23-what-is-react-fiber.md) if you notice any mistake. 🙏</small>
 
@@ -173,13 +173,14 @@ Really soon in the next major version and **without changing the public API**.
 
 Facebook folks care a lot about [stability](https://facebook.github.io/react/contributing/design-principles.html#stability). They do not like breaking changes because they have something like 30.000 components to maintain.
 
-> `Fiber` is expected to be enabled by default in **React 16**.
+> `Fiber` will be enabled by default in **React 16**.
 
 The first releases will focus on **backward compatibility** and **not** on new features.
 
-Facebook is already using `React Fiber` in its beta version. You can try it out [here](https://www.beta.facebook.com).
+Facebook is already using `React Fiber` in [production](https://github.com/facebook/react/pull/10517).
+You can navigate to Facebook, open the Dev Tools and type `require('React').version` to find out the exact version of React they are using.
 
-You can play with `Fiber` today by simply typing:
+You can start play with [React Fiber beta](https://github.com/facebook/react/issues/10294) today by simply typing:
 
 ```
 npm install react@next react-dom@next
@@ -192,12 +193,9 @@ npm install react@next react-dom@next
 * [Recover from errors thrown in render methods (Error Boundaries)](https://github.com/facebook/react/issues/2461)
 * [Render subtrees into DOM node containers (Portals)](https://github.com/facebook/react/pull/8386)
 * [Render can return multiple children](https://github.com/facebook/react/issues/2127)
+* [Streaming mode for server renderer](https://github.com/facebook/react/blob/master/src/renderers/dom/ReactDOMNodeStreamRenderer.js#L20)
 
-<small>NB: These new features will not be available in React 16 which, as I already said, will mainly focus on backward compatibility.</small>
-
-We already had a taste of how the new `unstable_deferredUpdates` API works on the triangles demo.
-
-I am planning to analyse the rest of the new experimental functionalities as and when I have some free time in different posts. For now you can click on the links above to have an overview of what they are introducing.
+<small>NB: Some of these new features will not be available in React 16 which, as I already said, will mainly focus on backward compatibility.</small>
 
 ## Conclusion
 So in a nutshell, why should you be excited about this shiny new version of the React reconciler algorithm?
