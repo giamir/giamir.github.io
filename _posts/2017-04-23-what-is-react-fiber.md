@@ -6,7 +6,7 @@ path: _posts/2017-04-23-what-is-react-fiber.md
 time: 10
 ---
 
-During the last months, the interest of the community to the upcoming version of React has grown rapidly, especially after the awesome job [Lin Clark](https://twitter.com/linclark) did to explain how `React Fiber` works with [cartoons](https://www.youtube.com/watch?list=PLb0IAmt7-GS3fZ46IGFirdqKTIxlws7e0&v=ZCuYPiUIONs) at React Conf 2017.
+During the last months, the interest of the community to the latest version of React has grown rapidly, especially after the awesome job [Lin Clark](https://twitter.com/linclark) did to explain how `React Fiber` works with [cartoons](https://www.youtube.com/watch?list=PLb0IAmt7-GS3fZ46IGFirdqKTIxlws7e0&v=ZCuYPiUIONs) at React Conf 2017.
 
 So, what is `React Fiber` in a nutshell?
 
@@ -168,34 +168,32 @@ This way of "collaborating" with the main thread in order to do work is known un
 
 So thanks to cooperative scheduling, `Fiber` is able to interrupt work when the main thread needs to take care of something more urgent, and this, for the triangles demo, reflects a smoother animation without dropping frames.
 
-## When will React Fiber be released ?
-Really soon in the next major version and **without changing the public API**.
+## Can I use React Fiber today ?
+Yes, **React 16** is the first version of React built on top of the *Fiber Architecture* and it has been officially released last September.
 
-Facebook folks care a lot about [stability](https://facebook.github.io/react/contributing/design-principles.html#stability). They do not like breaking changes because they have something like 30.000 components to maintain.
+Facebook folks care a lot about [stability](https://facebook.github.io/react/contributing/design-principles.html#stability); that's why React 16 keeps essentially **the same public API** of React older versions despite the complete rewrite of the reconciler.
 
-> `Fiber` will be enabled by default in **React 16**.
+> `Fiber` reconciler is enabled by default in **React 16**.
 
-The first releases will focus on **backward compatibility** and **not** on new features.
+You can start to use `Fiber` today by simply installing the latest React stable version.
+In case you need to upgrade from an older version of the library, the React core team put together a very useful [upgrade guide](https://reactjs.org/blog/2017/09/26/react-v16.0.html#upgrading).
 
-Facebook is already using `React Fiber` in [production](https://github.com/facebook/react/pull/10517).
-You can navigate to Facebook, open the Dev Tools and type `require('React').version` to find out the exact version of React they are using.
+## What new features React Fiber introduces ?
+`React Fiber` opens the door to a lot of new functionalities.
+Some of them are already stable and available today:
 
-You can start play with [React Fiber beta](https://github.com/facebook/react/issues/10294) today by simply typing:
+* Error Boundaries: recover from errors thrown in render methods
+* Portals: render subtrees into DOM node containers
+* New render return types: fragments and strings
+* Streaming mode for server renderer
 
-```
-npm install react@next react-dom@next
-```
+Considering that the React 16 release was mainly focused on **backward compatibility** it is quite impressive the amount of new stable features we can already use because of the reconciler rewrite.
+You can have a deeper overview of this new functionalities in the [Official React 16 press release](https://reactjs.org/blog/2017/09/26/react-v16.0.html).
 
-## What new features will React Fiber introduce ?
-`React Fiber` opens the door to a lot of new functionalities. These are the ones the React Core team has already started working on.
+**Async rendering** features are still not stable at the moment of writing but they are the main area the React core team is working on.
+The Triangles demo explained above fall under this area of development. Be able to prioritise and schedule updates is considered the future of React and over the next few releases we can expect to see more async rendering features becoming stable.
 
-* [Defer updates to avoid dropping frames (Async setState / Time slicing)](https://github.com/facebook/react/issues/8830)
-* [Recover from errors thrown in render methods (Error Boundaries)](https://github.com/facebook/react/issues/2461)
-* [Render subtrees into DOM node containers (Portals)](https://github.com/facebook/react/pull/8386)
-* [Render can return multiple children](https://github.com/facebook/react/issues/2127)
-* [Streaming mode for server renderer](https://github.com/facebook/react/blob/master/src/renderers/dom/ReactDOMNodeStreamRenderer.js#L20)
-
-<small>NB: Some of these new features will not be available in React 16 which, as I already said, will mainly focus on backward compatibility.</small>
+<small>You can read more about the async rendering features status in [this thread](https://github.com/facebook/react/issues/8830).</small>
 
 ## Conclusion
 So in a nutshell, why should you be excited about this shiny new version of the React reconciler algorithm?
