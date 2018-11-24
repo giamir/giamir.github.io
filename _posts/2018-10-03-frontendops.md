@@ -8,6 +8,8 @@ time: 15
 
 I had recently the privilege to speak about **FrontendOps** at the last [ThoughtWorks XConf EU](https://www.thoughtworks.com/xconf-eu) in UK, Germany and Spain. You can find my presentation slides [here](https://www.slideshare.net/ThoughtWorks/frontendops-giamir-buoncristiani) and at some point soon a video of the talk will be made available. For now if you are interested to the topic what follows is essentially my talk transcript.
 
+> **Update 14.11.18: a video of my talk is now available [here](https://www.youtube.com/watch?v=ofPBQuJvQ74).**
+
 This article describes the journey towards my definition of FrontendOps and why I think it’s an important concept in the context of building web user interfaces.
 
 Some of you may think FrontendOps is just another buzzword I came up with.
@@ -236,6 +238,7 @@ So at the beginning of the article I promise you that I will be wrapping up by g
 If your team is adopting FrontendOps practices, your users will thank you.
 
 ### References
+* [My FrontendOps conference talk](https://www.youtube.com/watch?v=ofPBQuJvQ74)
 * [The Frontend Operations engineer](https://www.smashingmagazine.com/2013/06/front-end-ops/)
 * [Architecture without architects - Talk](https://www.youtube.com/watch?v=qVyt3qQ_7TA)
 * [Microservices Prerequisites](https://martinfowler.com/bliki/MicroservicePrerequisites.html)
