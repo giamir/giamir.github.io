@@ -4,10 +4,10 @@ layout: page
 class: about
 ---
 
-I’m [Giamir](/quirky-name), an Italian engineer working as a Software Developer at [ThoughtWorks](https://www.thoughtworks.com).
+I’m [Giamir](/quirky-name), a senior software developer at [ThoughtWorks](https://www.thoughtworks.com), an agile consultant, and a frontend advocate. 
 
-I'm focused on sustainable software development: growing high-quality, maintainable, well-tested software is what I care about. [Object-oriented design principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)) and [Agile Methodologies](http://agilemanifesto.org/) are my bread and butter.
+I lead the internal frontend community at ThoughtWorks together with my colleague [Rufus Raghunath](https://rufusraghunath.com/) where we draw inspiration and insights from the real-world experiences of our peers across the world.
 
-I'm particularly passionate about JavaScript, but I'm a polyglot by nature: during the years I've played with Ruby, PHP, Python and Java, either for work or for fun. I worked as a freelance web designer in the past and I have experience in making user interface nice and usable. It's very easy to find me playing with the latest HTML and CSS features.
+Away from work I like to play videogames and spend time in Tuscany, my homeland, hiking and eating good food.
 
 [Ask me anything!](mailto:hello@giamir.com?Subject=Hello%20Giamir)
