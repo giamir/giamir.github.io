@@ -21,13 +21,6 @@ In this talk, we will show how the principles of evolutionary architecture can b
 
 <iframe style="margin-bottom: 20px;" width="100%" height="400" src="https://www.youtube.com/embed/QNRv-KyhVK0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### What's next?
-One of the challenges we are likely to face when we build an Evolutionary UI is *keeping UX consistent*. 
-UX Designer [Shawn Lukas](https://shawnlukas.com) and I have been working on a presentation to share some of the learnings from our current project where we helped streamlined communication between designers and developers across 5 cross functional teams in 2 different timezones while working on a single page application composed by 10+ micro-frontends. 
-
-Stay tuned for this upcoming talk:<br />
-**UX in the Era of Micro-Frontends: Building consistent User Experiences in highly distributed systems**
-
 ### References
 * [Evolutionary Architecture](https://evolutionaryarchitecture.com)
 * [Evolutionary UI talk (jsday 2019 - Verona)](https://www.youtube.com/watch?v=5915WUFazjo)
