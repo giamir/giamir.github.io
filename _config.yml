@@ -6,8 +6,8 @@ description: > # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://giamir.com" # the base hostname & protocol for your site
 twitter_username: giamir
-github_username:  giamir
-exclude: ['node_modules']
+github_username: giamir
+exclude: ["node_modules"]
 paginate: 10
 paginate_path: "/page:num/"
 permalink: /:year/:month/:title
@@ -18,4 +18,4 @@ sass:
 markdown: kramdown
 
 # Gems
-gems: [jekyll-paginate]
+plugins: [jekyll-paginate]
