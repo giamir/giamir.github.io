@@ -1,7 +1,7 @@
 ---
 layout: post
 permalink: /alternative-patterns-in-JS-OLOO-style
-title: 'Alternative patterns in JS: OLOO style'
+title: "Alternative patterns in JS: OLOO style"
 path: _posts/2016-04-25-alternative-patterns-in-JS-OLOO-style.md
 time: 5
 ---
@@ -29,26 +29,25 @@ No more need to use function as a constructor to create objects; `Object.create(
 
 Let's have a look at how we can implement the same Student / Person relation using OLOO.
 
-
 {% highlight javascript %}
 var Person = {
-  init: function(name) {
-    this.name = name;
-  },
-  getName: function() {
-    return this.name;
-  }
+init: function(name) {
+this.name = name;
+},
+getName: function() {
+return this.name;
+}
 };
 
 var Student = Object.create(Person);
 
 Student.set = function(name, school) {
-  this.init(name);
-  this.school = school;
+this.init(name);
+this.school = school;
 };
 
 Student.getSchool = function() {
-  return this.school;
+return this.school;
 };
 
 var giamir = Object.create(Student);
@@ -94,27 +93,26 @@ If you grasped the OLOO style pattern and you want to have a look at a slightly 
 
 This series of articles aimed to answer essentially 2 questions:
 
-* Why is so complicated to work with pseudoclasses?
-* Do we really need to fake classes in JS?
+- Why is so complicated to work with pseudoclasses?
+- Do we really need to fake classes in JS?
 
-* __Because it does not embrace the language. It's like having a dolby surround system and listen mono. Actually it's even worst because to "listen mono" (use classes) you need to use your modern system (JS) in an unnatural way (use constructors to simulate classes).__
+- **Because it does not embrace the language. It's like having a dolby surround system and listen mono. Actually it's even worst because to "listen mono" (use classes) you need to use your modern system (JS) in an unnatural way (use constructors to simulate classes).**
 
-
-* __NO, JS is a very powerful programming language and take a "faking classes" approach limits your code. You completely miss what makes JS so cool and interesting.__
+- **NO, JS is a very powerful programming language and take a "faking classes" approach limits your code. You completely miss what makes JS so cool and interesting.**
 
 These are just my answers; I would like to hear yours.<br>
 Drop a comment below!
 
 ### Further reading
 
-This topic was also the subject of the speech I presented as part of my [ThoughtWorks](https://www.thoughtworks.com) application process. Slides and video are available at the following links.
+This topic was also the subject of the speech I presented as part of my [Thoughtworks](https://www.thoughtworks.com) application process. Slides and video are available at the following links.
 
-* [Slides](https://speakerdeck.com/giamir/js-leave-the-classes-to-those-other-languages)
-* [Video _15 mins_](https://www.youtube.com/watch?v=HnQ0FPwcaZ4&feature=youtu.be)
+- [Slides](https://speakerdeck.com/giamir/js-leave-the-classes-to-those-other-languages)
+- [Video _15 mins_](https://www.youtube.com/watch?v=HnQ0FPwcaZ4&feature=youtu.be)
 
 If you would like to expand upon these aspects of JS here is a list of useful resources:
 
-* [JS Objects: Inherited a mess - _Kyle Simpson_](https://davidwalsh.name/javascript-objects)
-* [JavaScript constructors, prototypes, and the new keyword - _Pivotal Labs_](https://blog.pivotal.io/labs/labs/javascript-constructors-prototypes-and-the-new-keyword)
-* [The Two Pillars of JavaScript - _Eric Elliott_](https://medium.com/javascript-scene/the-two-pillars-of-javascript-ee6f3281e7f3)
-* [You Don't Know JS: this & Object Prototypes - _Kyle Simpson's book_](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20&%20object%20prototypes/README.md#you-dont-know-js-this--object-prototypes)
+- [JS Objects: Inherited a mess - _Kyle Simpson_](https://davidwalsh.name/javascript-objects)
+- [JavaScript constructors, prototypes, and the new keyword - _Pivotal Labs_](https://blog.pivotal.io/labs/labs/javascript-constructors-prototypes-and-the-new-keyword)
+- [The Two Pillars of JavaScript - _Eric Elliott_](https://medium.com/javascript-scene/the-two-pillars-of-javascript-ee6f3281e7f3)
+- [You Don't Know JS: this & Object Prototypes - _Kyle Simpson's book_](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20&%20object%20prototypes/README.md#you-dont-know-js-this--object-prototypes)

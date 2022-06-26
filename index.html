@@ -7,21 +7,30 @@ layout: default
   <section class="post">
     <header class="post__header">
       <h1 class="alpha post__title">
-        <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        <a class="title" href="{{ post.url | prepend: site.baseurl }}"
+          >{{ post.title }}</a
+        >
       </h1>
       <span class="post__meta">
-        Posted on {{ post.date | date: "%b %-d, %Y" }} by <a href="//twitter.com/giamir" target="_blank">Giamir Buoncristiani</a> - {{ post.time }}min
+        Posted on {{ post.date | date: "%b %-d, %Y" }} by
+        <a href="//twitter.com/giamir" target="_blank">Giamir Buoncristiani</a>
+        - {{ post.time }}min
       </span>
     </header>
     <div class="post__content">
-      <p>
-        {{ post.content | strip_html | truncatewords: 30 }}
-      </p>
+      <p>{{ post.content | strip_html | truncatewords: 30 }}</p>
     </div>
     <div class="post__button">
-      <a href="{{ post.url | prepend: site.baseurl }}" class="button" title="Read {{ post.title }}">
+      <a
+        href="{{ post.url | prepend: site.baseurl }}"
+        class="button"
+        title="Read {{ post.title }}"
+      >
         Read more
-        <img src="{{ site.baseurl }}/img/icons/more.svg" alt="{{ post.title }}">
+        <img
+          src="{{ site.baseurl }}/img/icons/more.svg"
+          alt="{{ post.title }}"
+        />
       </a>
     </div>
   </section>

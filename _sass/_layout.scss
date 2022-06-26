@@ -3,22 +3,21 @@
  */
 .button {
   display: inline-block;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   text-transform: uppercase;
   color: #b1b1b1;
-  border: 1px solid rgba(0,0,0,0.15);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   padding: 13px 23px 13px 26px;
   border-radius: 26px;
   &:hover {
-    border-color: rgba(0,0,0,0.25);
+    border-color: rgba(0, 0, 0, 0.25);
     color: #777;
   }
   img {
     width: 18px;
   }
 }
-
 
 /*
  * HEADER
@@ -50,7 +49,7 @@
  * NAV
  */
 .nav {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   border-radius: 3px 3px 0 0;
   background: $dark-blue;
   text-align: center;
@@ -99,8 +98,9 @@
       margin: 0 5px;
       a {
         display: block;
+        padding-bottom: 5px;
         img {
-          opacity: .9;
+          opacity: 0.9;
           width: 18px;
         }
       }
@@ -124,21 +124,15 @@
       li {
       }
     }
-    p{
+    p {
       text-align: justify;
     }
   }
   &.not-found {
-    background: url('../img/404.png') center top no-repeat;
+    background: url("../img/404.png") center top no-repeat;
     background-size: contain;
     min-height: 300px;
     padding: 100px 0 0;
-  }
-  &.about{
-    background: url('../img/about.png') center top no-repeat;
-    background-size: contain;
-    min-height: 550px;
-    padding: 200px 0 0;
   }
   &.single {
     ol {
@@ -163,7 +157,7 @@
       color: $dark-blue;
       text-decoration: none;
       &:hover {
-        color: $blue;
+        text-decoration: underline;
       }
     }
   }
@@ -196,7 +190,7 @@
   text-align: center;
   margin: 0 -90px -90px;
   padding: 20px;
-  font-family: 'Montserrat', serif;
+  font-family: "Montserrat", serif;
   text-transform: uppercase;
   @media screen and (max-width: 860px) {
     margin: 0 -50px -50px;
@@ -314,7 +308,7 @@
     }
     li {
       position: relative;
-      border-bottom: 1px solid rgba(0,0,0,.05);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
       &:last-child {
         border-bottom: 0;
         a {
@@ -336,7 +330,7 @@
         }
         h3 {
           span {
-            font-family: 'Proxima Nova', serif;
+            font-family: "Proxima Nova", serif;
             letter-spacing: 0.5px;
             display: block;
             font-size: 14px;
@@ -381,7 +375,7 @@
 
 .twitter-follow-button {
   visibility: hidden;
-  &[data-twttr-rendered=true] {
+  &[data-twttr-rendered="true"] {
     visibility: visible;
   }
 }

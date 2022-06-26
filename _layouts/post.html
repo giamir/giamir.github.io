@@ -1,111 +1,129 @@
 ---
 layout: default
 ---
+
 <article class="post single">
   <header class="post__header">
-    <h1 class="alpha post__title" itemprop="name headline">
-      {{ page.title }}
-    </h1>
+    <h1 class="alpha post__title" itemprop="name headline">{{ page.title }}</h1>
     <span class="post__meta">
-    	<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-    		Posted on {{ page.date | date: "%b %-d, %Y" }}
-    	</time>
-    	{% if page.path %}
-      -
-      <a class="post__edit" href="//github.com/giamir/giamir.github.io/blob/master/{{ page.path }}">
+      <time
+        datetime="{{ page.date | date_to_xmlschema }}"
+        itemprop="datePublished"
+      >
+        Posted on {{ page.date | date: "%b %-d, %Y" }}
+      </time>
+      {% if page.path %} -
+      <a
+        class="post__edit"
+        href="//github.com/giamir/giamir.github.io/blob/master/{{ page.path }}"
+      >
         Edit this page on GitHub
       </a>
       {% endif %}
     </span>
   </header>
-  <section class="post__content">
-    {{ content }}
-  </section>
+  <section class="post__content">{{ content }}</section>
 </article>
 
 <div class="author">
   <div class="author__content">
     <div class="author__pic">
-      <img src="{{ site.baseurl }}/img/giamir.jpg" alt="Giamir Buoncristiani">
+      <img src="{{ site.baseurl }}/img/giamir.jpg" alt="Giamir Buoncristiani" />
     </div>
     <div class="author__bio">
       <h3>
         <a href="/about.html" class="author__name">Giamir Buoncristiani</a>
       </h3>
       <p>
-        Software Developer <a href="https://www.thoughtworks.com">@ThoughtWorks</a>.<br> JavaScript and OpenSource enthusiast.
+        Lead Developer
+        <a href="https://www.thoughtworks.com">@Thoughtworks</a>.<br />
+        JavaScript and OpenSource enthusiast.
       </p>
-      <a href="https://twitter.com/giamir" class="twitter-follow-button" data-show-count="false"></a>
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      <a
+        href="https://twitter.com/giamir"
+        class="twitter-follow-button"
+        data-show-count="false"
+      ></a>
+      <script>
+        !(function (d, s, id) {
+          var js,
+            fjs = d.getElementsByTagName(s)[0],
+            p = /^http:/.test(d.location) ? "http" : "https";
+          if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = p + "://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+          }
+        })(document, "script", "twitter-wjs");
+      </script>
     </div>
   </div>
 </div>
 
 <aside class="similar">
   <div class="similar__content">
-    <h3 class="similar__title gamma">
-      Other posts
-    </h3>
+    <h3 class="similar__title gamma">Other posts</h3>
     <ul class="similar__posts"></ul>
   </div>
 </aside>
 
 <script>
-var data = [{% for post in site.posts %}
-  {% if post != page %}
-    {
-      title:'{{ post.title }}',
-      date:'{{ post.date | date: "%b %-d, %Y" }}',
-      url:'{{ post.url | prepend: site.baseurl }}'
-    }{% unless forloop.last %},{% endunless %}
-  {% endif %}
-{% endfor %}];
+  var data = [{% for post in site.posts %}
+    {% if post != page %}
+      {
+        title:'{{ post.title }}',
+        date:'{{ post.date | date: "%b %-d, %Y" }}',
+        url:'{{ post.url | prepend: site.baseurl }}'
+      }{% unless forloop.last %},{% endunless %}
+    {% endif %}
+  {% endfor %}];
 
-var JekyllRandom = (function () {
+  var JekyllRandom = (function () {
 
-  function template(post) {
-    var div = document.createElement('div');
-    div.innerHTML = [
-      '<li>',
-        '<a href="' + post.url + '">',
-          '<div class="similar__icon">',
-            '<img src="{{ site.baseurl }}/img/icons/more.svg" alt="' + post.title + '">',
-          '</div>',
-          '<h3>',
-            post.title,
-            '<span>',
-              'Posted on ' + post.date,
-            '</span>',
-          '</h3>',
-        '</a>',
-      '</li>'
-    ].join('');
-    return div.childNodes[0];
-  }
-
-  function shuffle(collection) {
-    for (var i = collection.length - 1; i > 0; i--) {
-      var randomIndex = Math.floor(Math.random() * (i + 1));
-      var itemAtIndex = collection[randomIndex];
-      collection[randomIndex] = collection[i];
-      collection[i] = itemAtIndex;
-    }
-    return collection;
-  }
-
-  return function (node, posts) {
-    var docFrag = document.createDocumentFragment();
-    node = document.querySelector(node);
-    var posts = shuffle(posts).slice(0, 3);
-    for (var i = posts.length; i--;) {
-      docFrag.appendChild(template(posts[i]));
+    function template(post) {
+      var div = document.createElement('div');
+      div.innerHTML = [
+        '<li>',
+          '<a class="similar-post" href="' + post.url + '">',
+            '<div class="similar__icon">',
+              '<img src="{{ site.baseurl }}/img/icons/more.svg" alt="' + post.title + '">',
+            '</div>',
+            '<h3>',
+              post.title,
+              '<span>',
+                'Posted on ' + post.date,
+              '</span>',
+            '</h3>',
+          '</a>',
+        '</li>'
+      ].join('');
+      return div.childNodes[0];
     }
 
-    node.appendChild(docFrag);
-  };
-})();
+    function shuffle(collection) {
+      for (var i = collection.length - 1; i > 0; i--) {
+        var randomIndex = Math.floor(Math.random() * (i + 1));
+        var itemAtIndex = collection[randomIndex];
+        collection[randomIndex] = collection[i];
+        collection[i] = itemAtIndex;
+      }
+      return collection;
+    }
 
-JekyllRandom('.similar__posts', data);
+    return function (node, posts) {
+      var docFrag = document.createDocumentFragment();
+      node = document.querySelector(node);
+      var posts = shuffle(posts).slice(0, 3);
+      for (var i = posts.length; i--;) {
+        docFrag.appendChild(template(posts[i]));
+      }
+
+      node.appendChild(docFrag);
+    };
+  })();
+
+  JekyllRandom('.similar__posts', data);
 </script>
 
 <div class="disqus">

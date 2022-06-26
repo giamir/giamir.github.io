@@ -4,22 +4,35 @@
 
 // Colours
 $white: #ffffff;
-$blue: #12476E;
-$dark-blue: #0A263B;
-$celestial: #2799ED;
+$blue: #12476e;
+$dark-blue: #0a263b;
+$celestial: #2799ed;
 $text-color: #4b4f54;
 $text-color-light: #e9e9e9;
-$border-color: #E6E6E6;
+$border-color: #e6e6e6;
 $yellow: #dda951;
-
 
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
 
-html, body,h1, h2, h3, h4, h5, h6,
-p, blockquote, pre, hr,
-dl, dd, ol, ul, figure {
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+hr,
+dl,
+dd,
+ol,
+ul,
+figure {
   margin: 0;
   padding: 0;
 }
@@ -30,7 +43,7 @@ button,
 input,
 select,
 textarea {
-  font: 400 62.5% 'Proxima Nova', sans-serif;
+  font: 400 62.5% "Proxima Nova", sans-serif;
   color: $text-color;
   letter-spacing: 0.5px;
   -webkit-font-smoothing: antialiased;
@@ -71,7 +84,7 @@ body {
  * A better looking default horizontal rule
  */
 
- hr {
+hr {
   display: block;
   height: 1px;
   border: 0;
@@ -116,12 +129,14 @@ textarea {
   resize: vertical;
 }
 
-input, textarea, button, a {
-  transition: 0.2s color ease,
-              0.2s background ease;
+input,
+textarea,
+button,
+a {
+  transition: 0.2s color ease, 0.2s background ease;
 
   &:focus {
-    outline: none;
+    outline: 1px auto -webkit-focus-ring-color;
   }
 }
 
@@ -132,9 +147,28 @@ ol {
   padding: 0;
 }
 
+a:not(.button, .logo, .title, .similar-post)::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: $yellow;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+a:not(.button, .logo, .title, .similar-post):hover::before {
+  transform: scaleX(1);
+}
+
 a {
   color: $yellow;
+  font-weight: bold;
   text-decoration: none;
+  position: relative;
   &:hover {
     color: darken($yellow, 5%);
   }
@@ -143,7 +177,6 @@ a {
 p {
   margin-bottom: 20px;
 }
-
 
 blockquote {
   border-left: 4px solid $text-color;
@@ -179,33 +212,43 @@ blockquote > :last-child {
    Typography styles
    ========================================================================== */
 
-h1, h2, h3, h4, h5 {
-  font-family: 'Montserrat', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Montserrat", sans-serif;
   letter-spacing: -1px;
   line-height: 1.3;
   margin: 40px 0 10px;
 }
-h1, .alpha {
+h1,
+.alpha {
   font-size: 40px;
   margin: 0 0 20px;
 }
 
-h2, .beta {
+h2,
+.beta {
   font-size: 30px;
 }
 
-h3, .gamma {
+h3,
+.gamma {
   font-size: 26px;
 }
 
-h4, .delta {
+h4,
+.delta {
   font-size: 22px;
 }
 
-h5, .epsilon {
+h5,
+.epsilon {
   font-size: 20px;
 }
 
-h6, .zeta {
+h6,
+.zeta {
   font-size: 18px;
 }
